@@ -1,0 +1,12 @@
+{
+  "name": "dsh-launchpad",
+  "description": "发射台：收藏导航、面板内阅读、选区伴读、可迭代扩展与一句话 Forge",
+  "version": "0.1.2",
+  "entry": {
+    "name": "dsh-launchpad",
+    "inject": []
+  },
+  "client": {
+    "platform": "web"
+  }
+}

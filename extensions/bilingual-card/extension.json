@@ -1,0 +1,12 @@
+{
+  "id": "bilingual-card",
+  "name": "双语对照",
+  "icon": "🌐",
+  "version": 1,
+  "source": "builtin",
+  "description": "生成逐段英中对照的精美 HTML 阅读卡片",
+  "scopes": ["page"],
+  "kind": "material-card",
+  "prompt": "prompt.md",
+  "output": { "saveAs": "cards/{{date}}-bilingual.html", "openAfter": true }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "mindmap-card",
+  "name": "思维导图",
+  "icon": "🧠",
+  "version": 1,
+  "source": "builtin",
+  "description": "把页面结构画成纯 HTML+CSS 的树状思维导图",
+  "scopes": ["page"],
+  "kind": "material-card",
+  "prompt": "prompt.md",
+  "output": { "saveAs": "cards/{{date}}-mindmap.html", "openAfter": true }
+}

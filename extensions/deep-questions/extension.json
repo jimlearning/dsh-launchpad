@@ -1,0 +1,12 @@
+{
+  "id": "deep-questions",
+  "name": "深挖追问",
+  "icon": "❓",
+  "version": 1,
+  "source": "builtin",
+  "description": "生成 5 个最值得深挖的问题，由浅入深",
+  "scopes": ["page"],
+  "kind": "chat-task",
+  "prompt": "prompt.md",
+  "output": {}
+}

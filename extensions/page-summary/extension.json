@@ -1,0 +1,12 @@
+{
+  "id": "page-summary",
+  "name": "全文总结",
+  "icon": "📝",
+  "version": 1,
+  "source": "builtin",
+  "description": "一页读懂全文：核心观点、论据与值得追问的问题",
+  "scopes": ["page"],
+  "kind": "chat-task",
+  "prompt": "prompt.md",
+  "output": {}
+}

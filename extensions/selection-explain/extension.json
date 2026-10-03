@@ -1,0 +1,12 @@
+{
+  "id": "selection-explain",
+  "name": "解释这段",
+  "icon": "💡",
+  "version": 1,
+  "source": "builtin",
+  "description": "用通俗语言解释选中的段落，补背景、举例子",
+  "scopes": ["selection"],
+  "kind": "chat-task",
+  "prompt": "prompt.md",
+  "output": {}
+}

@@ -1,0 +1,13 @@
+{
+  "id": "weekly-digest",
+  "name": "最近一周动态",
+  "icon": "📅",
+  "version": 1,
+  "source": "builtin",
+  "description": "汇总站点最近 7 天的更新，生成一期可归档的周报",
+  "scopes": ["site"],
+  "kind": "chat-task",
+  "materials": { "crawl": { "strategy": "recent-posts", "sinceDays": 7, "limit": 20 } },
+  "prompt": "prompt.md",
+  "output": { "saveAs": "digests/{{date}}-weekly.md", "pin": true, "openAfter": true }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "selection-note",
+  "name": "记入笔记",
+  "icon": "📌",
+  "version": 1,
+  "source": "builtin",
+  "description": "一键把选中段落记入站点笔记（无需 LLM）",
+  "scopes": ["selection"],
+  "kind": "direct-action",
+  "action": "append-highlight",
+  "prompt": "prompt.md",
+  "output": {}
+}

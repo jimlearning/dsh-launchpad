@@ -1,0 +1,12 @@
+{
+  "id": "selection-translate",
+  "name": "翻译选段",
+  "icon": "🇬🇧",
+  "version": 1,
+  "source": "builtin",
+  "description": "选中段落中英互译，术语准确",
+  "scopes": ["selection"],
+  "kind": "chat-task",
+  "prompt": "prompt.md",
+  "output": {}
+}

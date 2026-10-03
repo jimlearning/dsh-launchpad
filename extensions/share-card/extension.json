@@ -1,0 +1,12 @@
+{
+  "id": "share-card",
+  "name": "分享卡片",
+  "icon": "🖼",
+  "version": 1,
+  "source": "builtin",
+  "description": "金句 + 出处的精美分享卡片（900×500，可导出）",
+  "scopes": ["page"],
+  "kind": "material-card",
+  "prompt": "prompt.md",
+  "output": { "saveAs": "cards/{{date}}-share.html", "openAfter": true }
+}

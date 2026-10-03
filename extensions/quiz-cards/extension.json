@@ -1,0 +1,12 @@
+{
+  "id": "quiz-cards",
+  "name": "出题自测",
+  "icon": "🃏",
+  "version": 1,
+  "source": "builtin",
+  "description": "把页面核心概念变成 10-15 张问答闪卡",
+  "scopes": ["page"],
+  "kind": "material-card",
+  "prompt": "prompt.md",
+  "output": { "saveAs": "notebook/flashcards.json", "openAfter": true }
+}

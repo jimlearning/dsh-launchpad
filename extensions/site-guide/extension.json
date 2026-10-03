@@ -1,0 +1,13 @@
+{
+  "id": "site-guide",
+  "name": "站点导览",
+  "icon": "🧭",
+  "version": 1,
+  "source": "builtin",
+  "description": "快速读懂一个站点：讲什么、面向谁、从哪读起",
+  "scopes": ["site"],
+  "kind": "chat-task",
+  "materials": { "crawl": { "strategy": "shallow", "limit": 10 } },
+  "prompt": "prompt.md",
+  "output": {}
+}

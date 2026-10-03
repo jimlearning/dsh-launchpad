@@ -1,0 +1,13 @@
+{
+  "id": "learning-path",
+  "name": "学习路径",
+  "icon": "🗺",
+  "version": 1,
+  "source": "builtin",
+  "description": "为教程类站点生成分阶段、可勾选的学习路线图",
+  "scopes": ["site"],
+  "kind": "chat-task",
+  "materials": { "crawl": { "strategy": "toc", "limit": 40 } },
+  "prompt": "prompt.md",
+  "output": { "saveAs": "notebook/roadmap.md", "pin": true, "openAfter": true }
+}
