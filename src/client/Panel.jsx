@@ -347,6 +347,16 @@ function SettingsPanel({ env, onClose }) {
       .catch(() => toast('复制失败，请手动选择复制', 'warn'));
   };
 
+  /** cardModel：blur/Enter 保存（仅变更时），空串 = 跟随默认模型。 */
+  const saveCardModel = () => {
+    const value = cardModel.trim();
+    if ((settings.cardModel ?? '') === value) return;
+    void save({ cardModel: value }).then(() => {
+      setSavedModel(true);
+      setTimeout(() => setSavedModel(false), 1600);
+    });
+  };
+
   return (
     <>
       <div className="dlp-pop-mask" onClick={onClose} />
@@ -384,6 +394,19 @@ function SettingsPanel({ env, onClose }) {
           <div className="dlp-set-row">
             <div><span className="dlp-set-label">AI 助手</span><span className="dlp-set-hint">关闭后 material-card 类扩展不可用</span></div>
             <Switch checked={settings.aiAssist !== false} label="AI 助手" onChange={(value) => void save({ aiAssist: value })} />
+          </div>
+          <div className="dlp-set-row" style={{ flexDirection: 'column', alignItems: 'stretch', gap: 6 }}>
+            <div>
+              <span className="dlp-set-label">扩展生成模型{savedModel && <span style={{ color: 'var(--dsw-alias-state-success-primary)' }}> · ✓ 已保存</span>}</span>
+              <span className="dlp-set-hint">留空跟随默认模型；生成类扩展（分享卡/双语卡等）用它，选个快模型能明显提速</span>
+            </div>
+            <input
+              className="dlp-input" value={cardModel} spellCheck={false}
+              placeholder="provider/model，例如 opencode-go/deepseek-v4.1-flash"
+              onChange={(event) => setCardModel(event.target.value)}
+              onBlur={saveCardModel}
+              onKeyDown={(event) => { if (event.key === 'Enter') event.currentTarget.blur(); }}
+            />
           </div>
         </div>
 
