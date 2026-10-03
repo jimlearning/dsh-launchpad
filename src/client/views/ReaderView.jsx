@@ -103,6 +103,9 @@ export function ReaderView({ env, active }) {
   }, [active, loadExtensions]);
 
   // ------------------------------------------------------------- 链接拦截（事件委托）
+  // 铁律：阅读 DOM 内的一切默认导航都必须拦下。文章 HTML 没有 <base>，相对链接会被
+  // 浏览器解析到面板自身 URL——桌面端是 dsh-app: 协议，默认行为会劫持整个窗口（蒙层事故）。
+  // 链接一律以「文章自身 URL」为基准解析，只有 http(s) 放行为新 tab，其余协议只阻断。
   useEffect(() => {
     const main = mainRef.current;
     if (!main) return undefined;
@@ -110,17 +113,18 @@ export function ReaderView({ env, active }) {
       if (event.defaultPrevented || event.button !== 0) return;
       const anchor = event.target?.closest?.('a');
       if (!anchor || !anchor.closest('.dlp-reader')) return;
-      const href = anchor.href;
-      if (!href) return;
-      if (/^https?:\/\//i.test(href)) {
-        event.preventDefault();
-        env.openReader(href); // 新 tab 打开（自动去重激活）
+      event.preventDefault();
+      const raw = anchor.getAttribute('href');
+      if (!raw || raw.startsWith('#')) return;
+      let absolute = null;
+      try { absolute = new URL(raw, activeTab?.url ?? undefined).toString(); } catch { /* 非法 href 只阻断 */ }
+      if (absolute && /^https?:\/\//i.test(absolute)) {
+        env.openReader(absolute); // 新 tab 打开（自动去重激活）
       }
-      // 其他协议（mailto: 等）放行默认行为
     };
     main.addEventListener('click', onClick);
     return () => main.removeEventListener('click', onClick);
-  }, [env]);
+  }, [env, activeTab?.url]);
 
   // ------------------------------------------------------------- 选区捕获
   useEffect(() => {
