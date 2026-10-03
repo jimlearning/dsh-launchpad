@@ -201,6 +201,7 @@ tmp/              # 可删
 6. **工具表快照**：新注册的 agent 工具对进行中的会话不可见——测工具请开新会话或派子代理探针。
 7. **asar 解析**：app 内 @deepseek-ai 包在 app.asar 里，普通 node 的 ESM 解析不进去；验证用 `ELECTRON_RUN_AS_NODE=1 "<app>/Contents/MacOS/DeepSeek Harness" script.mjs` + `createRequire('/…/app.asar/dsh/package.json')`。e2e 走"复制 src + 桩 @deepseek-ai"路线（`scripts/forge-e2e.mjs`）。
 8. **GitHub 直连**：本机无代理时 github.com 超时是环境问题，不是 reader bug（curl 复现即可鉴别）。
+9. **面板内链接默认导航 = 窗口劫持炸弹**：阅读 DOM 没有 `<base>`，相对 `href` 会被解析到面板自身 URL；桌面端面板是 `dsh-app:` 协议，未拦截的点击（含 target=_blank）会劫持整个窗口（全屏无法关闭的蒙层，v0.1.4 事故）。铁律：`.dlp-reader` 内所有点击 `preventDefault`，用 `new URL(raw, 文章URL)` 解析，仅 http(s) 开新 tab，其余协议只阻断。
 
 ## 11. 测试与验证阶梯（从便宜到决定性）
 
